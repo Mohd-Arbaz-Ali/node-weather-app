@@ -10,6 +10,8 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 const viewPath = path.join(__dirname, '../tempelate/views')
 app.set('view engine', 'hbs')
 app.set('views', viewPath)
+const port = process.env.PORT || 3000
+
 app.use(express.static(publicDirectoryPath))
 app.get('', (req, res) => {
     res.render('index', {
@@ -63,6 +65,6 @@ app.get('*', (req, res) => {
         error: 'Page not found'
     })
 })
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('Server is o port 3000!')
 })
